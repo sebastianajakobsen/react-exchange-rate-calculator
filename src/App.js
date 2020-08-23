@@ -3,7 +3,7 @@ import Header from "./Components/Header";
 import ExchangeRate from "./Components/ExchangeRate";
 function App() {
 
-    const [currencies, setCurrencies] = useState(
+    const [currencies] = useState(
         [
             "AED", "ARS", "AUD", "BGN", "BRL", "BSD", "CAD", "CHF", "CLP", "CNY", "COP", "CZK",
             "DKK", "DOP", "EGP", "EUR", "FJD", "GBP", "GTQ", "HKD", "HRK", "HUF", "IDR", "ILS", "INR", "ISK", "JPY", "KRW",

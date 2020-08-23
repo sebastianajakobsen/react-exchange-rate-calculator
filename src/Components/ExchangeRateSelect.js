@@ -8,7 +8,7 @@ function ExchangeRateSelect({currencies, selected, currencyType, updateSelected}
     }
 
     return (
-        <select onChange={handleSelectChange} defaultValue={selected} >
+        <select onChange={handleSelectChange} value={selected} >
             {currencies.map((currency, index) => (
 
                 <ExchangeRateOption name={currency} key={index} currency={currency}/>

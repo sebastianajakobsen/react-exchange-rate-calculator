@@ -18,7 +18,7 @@ function ExchangeRate({currencies}) {
                 setRates(res.data.rates)
                 setExchangeRate((res.data.rates[currencyTwo] * exchangeAmount).toFixed(2))
             })
-    }, [currencyOne])
+    }, [currencyOne, currencyTwo, exchangeAmount ])
 
     function updateSelected(value, valueType) {
         if (valueType === 1) {
