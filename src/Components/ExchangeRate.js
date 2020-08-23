@@ -2,15 +2,13 @@ import React, {useEffect, useState} from 'react';
 import ExchangeRateSelect from "./ExchangeRateSelect";
 import axios from 'axios';
 
+
 function ExchangeRate({currencies}) {
 
     const [currencyOne, setCurrencyOne] = useState('DKK')
     const [currencyTwo, setCurrencyTwo] = useState('USD')
-    const [exchangeValue, setExchangeValue] = useState(1)
-
-
+    const [exchangeAmount, setExchangeAmount] = useState(1)
     const [rates, setRates] = useState([])
-
     const [exchangeRate, setExchangeRate] = useState(0)
 
     //
@@ -18,7 +16,7 @@ function ExchangeRate({currencies}) {
         axios.get(`https://api.exchangerate-api.com/v4/latest/${currencyOne}`)
             .then(res => {
                 setRates(res.data.rates)
-                setExchangeRate((res.data.rates[currencyTwo] * exchangeValue).toFixed(2))
+                setExchangeRate((res.data.rates[currencyTwo] * exchangeAmount).toFixed(2))
             })
     }, [currencyOne])
 
@@ -38,9 +36,9 @@ function ExchangeRate({currencies}) {
 
     function handleInputChange(e) {
         if(e.target.value.trim()) {
-            setExchangeValue(Math.abs(e.target.value))
+            setExchangeAmount(Math.abs(e.target.value))
         } else {
-            setExchangeValue("")
+            setExchangeAmount("")
         }
 
         setExchangeRate((rates[currencyTwo] * (Math.abs(e.target.value))).toFixed(2))
@@ -50,12 +48,12 @@ function ExchangeRate({currencies}) {
     return (
         <div>
             <p>Choose the currency and the amounts to get the exchange rate</p>
-            <p>1 {currencyOne} = {rates[currencyTwo]} {currencyTwo}</p>
+            <p>1 {currencyOne} = {exchangeRate} {currencyTwo}</p>
             <div>
                 <div className="flex">
                     <ExchangeRateSelect updateSelected={updateSelected} selected={currencyOne} currencyType={1}
                                         currencies={currencies}/>
-                    <input type="number" onChange={handleInputChange} value={exchangeValue} placeholder="0"/>
+                    <input type="number" onChange={handleInputChange} value={exchangeAmount} placeholder="0"/>
                 </div>
 
                 <div className="flex">
