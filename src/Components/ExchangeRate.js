@@ -47,23 +47,24 @@ function ExchangeRate({currencies}) {
 
     return (
         <div>
-            <p>Choose the currency and the amounts to get the exchange rate</p>
-            <p>1 {currencyOne} = {exchangeRate} {currencyTwo}</p>
+            <p className="my-8 text-center">Choose the currency and the amounts to get the exchange rate</p>
+
             <div>
-                <div className="flex">
+                <div className="flex relative justify-between items-center">
                     <ExchangeRateSelect updateSelected={updateSelected} selected={currencyOne} currencyType={1}
                                         currencies={currencies}/>
-                    <input type="number" onChange={handleInputChange} value={exchangeAmount} placeholder="0"/>
+                    <input className="block bg-gray-200 text-gray-700 border rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white" type="number" onChange={handleInputChange} value={exchangeAmount} placeholder="0"/>
                 </div>
 
-                <div className="flex">
-                    <button onClick={handleButtonClick}>Swap</button>
+                <div className="flex justify-between my-4 items-center">
+                    <button className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" onClick={handleButtonClick}>Swap</button>
+                    <p className="text-purple-500">1 {currencyOne} = {exchangeRate} {currencyTwo}</p>
                 </div>
 
-                <div className="flex">
+                <div className="flex relative justify-between items-center">
                     <ExchangeRateSelect updateSelected={updateSelected} selected={currencyTwo}  currencyType={2}
                                         currencies={currencies}/>
-                    <p>{exchangeRate}</p>
+                    <h3 className="text-2xl font-bold">{exchangeRate}</h3>
                 </div>
             </div>
 
