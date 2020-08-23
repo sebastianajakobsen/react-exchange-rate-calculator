@@ -9,13 +9,13 @@ function ExchangeRate({currencies}) {
 
     const [rates, setRates] = useState([])
 
-
+    //
     useEffect(()  => {
         axios.get(`https://api.exchangerate-api.com/v4/latest/${currencyOne}`)
             .then(res => {
                 setRates(res.data.rates)
             })
-    })
+    }, [currencyOne])
 
     function updateSelected(value, valueType) {
         if(valueType === 1) {
