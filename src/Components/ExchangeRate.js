@@ -37,8 +37,13 @@ function ExchangeRate({currencies}) {
     }
 
     function handleInputChange(e) {
-        setExchangeValue(Math.abs(e.target.value))
-        setExchangeRate((rates[currencyTwo] * exchangeValue).toFixed(2))
+        if(e.target.value.trim()) {
+            setExchangeValue(Math.abs(e.target.value))
+        } else {
+            setExchangeValue("")
+        }
+
+        setExchangeRate((rates[currencyTwo] * (Math.abs(e.target.value))).toFixed(2))
     }
 
 
@@ -48,9 +53,9 @@ function ExchangeRate({currencies}) {
             <p>1 {currencyOne} = {rates[currencyTwo]} {currencyTwo}</p>
             <div>
                 <div className="flex">
-                    <ExchangeRateSelect updateSelected={updateSelected} selected={currencyOne} valueType={1}
+                    <ExchangeRateSelect updateSelected={updateSelected} selected={currencyOne} currencyType={1}
                                         currencies={currencies}/>
-                    <input type="number" onChange={handleInputChange} value={exchangeValue}/>
+                    <input type="number" onChange={handleInputChange} value={exchangeValue} placeholder="0"/>
                 </div>
 
                 <div className="flex">
@@ -58,7 +63,7 @@ function ExchangeRate({currencies}) {
                 </div>
 
                 <div className="flex">
-                    <ExchangeRateSelect updateSelected={updateSelected} selected={currencyTwo} valueType={2}
+                    <ExchangeRateSelect updateSelected={updateSelected} selected={currencyTwo}  currencyType={2}
                                         currencies={currencies}/>
                     <p>{exchangeRate}</p>
                 </div>

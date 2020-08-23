@@ -1,10 +1,10 @@
 import React from 'react';
 import ExchangeRateOption from "./ExchangeRateOption";
 
-function ExchangeRateSelect({currencies, selected, valueType, updateSelected}) {
+function ExchangeRateSelect({currencies, selected, currencyType, updateSelected}) {
 
     function handleSelectChange(e) {
-        updateSelected(e.target.value, valueType)
+        updateSelected(e.target.value, currencyType)
     }
 
     return (
