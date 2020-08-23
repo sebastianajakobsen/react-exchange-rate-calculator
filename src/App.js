@@ -13,9 +13,11 @@ function App() {
     )
 
     return (
-    <div>
-      <Header/>
+    <div className="rounded-t-lg overflow-hidden border-t border-l border-r  px-3 py-10 flex justify-center">
+      <div className="w-full max-w-xs bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <Header/>
       <ExchangeRate currencies={currencies}/>
+    </div>
     </div>
   );
 }

@@ -53,12 +53,12 @@ function ExchangeRate({currencies}) {
                 <div className="flex relative justify-between items-center">
                     <ExchangeRateSelect updateSelected={updateSelected} selected={currencyOne} currencyType={1}
                                         currencies={currencies}/>
-                    <input className="block bg-gray-200 text-gray-700 border rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white" type="number" onChange={handleInputChange} value={exchangeAmount} placeholder="0"/>
+                    <input className="block w-2/4 bg-gray-200 text-gray-700 border rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white" type="number" onChange={handleInputChange} value={exchangeAmount} placeholder="0"/>
                 </div>
 
                 <div className="flex justify-between my-4 items-center">
-                    <button className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" onClick={handleButtonClick}>Swap</button>
-                    <p className="text-purple-500">1 {currencyOne} = {exchangeRate} {currencyTwo}</p>
+                    <button className="text-xs shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" onClick={handleButtonClick}>Swap</button>
+                    <p className="text-blue-500">1 {currencyOne} = {exchangeRate} {currencyTwo}</p>
                 </div>
 
                 <div className="flex relative justify-between items-center">

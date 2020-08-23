@@ -8,7 +8,7 @@ function ExchangeRateSelect({currencies, selected, currencyType, updateSelected}
     }
 
     return (
-        <select onChange={handleSelectChange} value={selected} className="appearance-none block bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
+        <select onChange={handleSelectChange} value={selected} className="font-bold appearance-none block bg-gray-200 text-gray-700 border rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white">
             {currencies.map((currency, index) => (
                 <ExchangeRateOption name={currency} key={index} currency={currency}/>
             ))}
