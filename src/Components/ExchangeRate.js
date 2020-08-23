@@ -25,14 +25,20 @@ function ExchangeRate({currencies}) {
         }
     }
 
-    return (
+    function handleButtonClick() {
+        const temp = currencyOne;
+        setCurrencyOne(currencyTwo)
+        setCurrencyTwo(temp)
+    }
 
+    return (
         <div>
             <p>Choose the currency and the amounts to get the exchange rate</p>
             <p>1 {currencyOne} = {rates[currencyTwo]} {currencyTwo}</p>
             <div>
-               <ExchangeRateSelect updateSelected={updateSelected} selected={currencyOne} valueType={1} currencies={currencies} />
+               <ExchangeRateSelect updateSelected={updateSelected} selected={currencyOne} valueType={1} currencies={currencies}/>
                <ExchangeRateSelect updateSelected={updateSelected} selected={currencyTwo} valueType={2} currencies={currencies}/>
+               <button onClick={handleButtonClick}>Swap</button>
             </div>
 
         </div>
