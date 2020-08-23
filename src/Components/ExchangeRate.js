@@ -1,28 +1,38 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import ExchangeRateSelect from "./ExchangeRateSelect";
+import axios from 'axios';
 
 function ExchangeRate({currencies}) {
 
-    const [value1, setValue1] = useState('DKK')
-    const [value2, setValue2] = useState('USD')
+    const [currencyOne, setCurrencyOne] = useState('DKK')
+    const [currencyTwo, setCurrencyTwo] = useState('USD')
+
+    const [rates, setRates] = useState([])
+
+
+    useEffect(()  => {
+        axios.get(`https://api.exchangerate-api.com/v4/latest/${currencyOne}`)
+            .then(res => {
+                setRates(res.data.rates)
+            })
+    })
 
     function updateSelected(value, valueType) {
         if(valueType === 1) {
-            setValue1(value)
+            setCurrencyOne(value)
         } else {
-            setValue2(value)
+            setCurrencyTwo(value)
         }
-
     }
 
     return (
 
         <div>
             <p>Choose the currency and the amounts to get the exchange rate</p>
-
+            <p>1 {currencyOne} = {rates[currencyTwo]} {currencyTwo}</p>
             <div>
-               <ExchangeRateSelect updateSelected={updateSelected} selected={value1} valueType={1} currencies={currencies} />
-               <ExchangeRateSelect updateSelected={updateSelected} selected={value2} valueType={2} currencies={currencies}/>
+               <ExchangeRateSelect updateSelected={updateSelected} selected={currencyOne} valueType={1} currencies={currencies} />
+               <ExchangeRateSelect updateSelected={updateSelected} selected={currencyTwo} valueType={2} currencies={currencies}/>
             </div>
 
         </div>
